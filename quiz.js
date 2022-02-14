@@ -12,15 +12,18 @@ const qs = JSON.parse(questions);
 //var check = JSON.parse(questions).Q1.Question;
 
 //window.alert(check);
-var quizstate = 0
-var answer = 0 
-var i = 0
+var quizstate = 0;
+var answer = 0 ;
+var i = 0;
 //var question_list = object.keys(qs);
-
+var score = 0;
 var keys = [];
 for(var k in qs) keys.push(k);
 
 var question = keys[i]
+
+
+
 function startQuiz(){
     
     if(quizstate != 1){
@@ -39,7 +42,8 @@ function startQuiz(){
 
 function quizover(){
     document.getElementById("quizover").style.display = "block";
-
+    
+    document.getElementById('outof').innerHTML = i;
 }
 
 function generatequestion(question){
@@ -47,12 +51,12 @@ function generatequestion(question){
     //var incorrect = 0;
     var question1 = eval("qs."+ question);
     var question2 = question1.Question; 
-    document.getElementById('question').innerHTML = question2
+    document.getElementById('question').innerHTML = question2;
     //console.log(question)
-    var answer = question1.Correctanswer
+    answer = question1.Correctanswer;
     //console.log(answer)
-    var incorrect = question1.incorrect.map((x)=>x)
-    console.log(incorrect)
+    var incorrect = question1.incorrect.map((x)=>x);
+    console.log(incorrect);
     incorrect.push(answer);
     var answers = incorrect;
     var answers2 = answers.sort((a, b) => 0.5 - Math.random());
@@ -72,18 +76,19 @@ function gen_box(x,i,y){
 
 
 function checkAnswer(b){
-    //window.alert(a)
+    window.alert(answer)
     //var b = document.getElementById("box"+b).textContent;
-    //window.alert(c);
+    window.alert(b);
    //check answer from box
-    if(document.getElementById("box"+b).textContent === a.toString())
+    if(document.getElementById("box"+b).textContent === answer.toString())
     //if answer is correct
     {document.getElementById("correct").style.display = "block";
     setTimeout(function(){document.getElementById("correct").style.display = "none"},1000)
     //update score
      updateScore();
+     document.getElementById("choices").innerHTML = '';
      //new question
-    questionShow();
+    generatequestion(question);
     
     }
     //if answer is incorrect
@@ -92,9 +97,20 @@ function checkAnswer(b){
 }
 
 function updateScore() {
-    score += 10;
+    score += 1;
     document.getElementById("scorevalue").innerHTML = score;
-    document.getElementById("gamescore").innerHTML = score;
+    document.getElementById("quizscore").innerHTML = score;
+
+    i+=1;
+    if(i<keys.length){
+        question = keys[i];  
+    }
+    else{
+        quizover()
+        i = 0;
+    }
+    
+    //window.alert(question);
     //window.alert(score);
 }
      
