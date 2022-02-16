@@ -7,8 +7,9 @@ from datetime import datetime
 
 
 url = './quiz questions.xlsx'
-
-qs = pd.read_excel(url,)
+options = pd.read_excel(url,'options')
+options.set_index('Options', inplace = True)
+qs = pd.read_excel(url,'questions')
 qs.head()
 qs.fillna('na' ,inplace = True)
 qs['incorrect'] = 'x'
@@ -27,7 +28,7 @@ qs.head()
 
 for index, row in qs.iterrows():
     incorrect=[]
-    incorrect = [x for x in row[2:-2] if x!='na']
+    incorrect = [x for x in row[2:-3] if x!='na']
     row['incorrect'] = incorrect
     print(incorrect)
 qs.head()
@@ -35,8 +36,12 @@ qs.head()
 qs.drop(columns = ['incorrect1','incorrect2','incorrect3','incorrect4'], inplace = True)
 
 json = qs.to_json(orient="index")
+json2 = options.to_json()
 
 with open("quiz2.js",'w') as e:
     e.write('var questions = `')
     e.write(f'{json}')
-    e.write('`')
+    e.write('`\n\n')
+    e.write('var options = `')
+    e.write(f'{json2}')
+    e.write('`\n\n')

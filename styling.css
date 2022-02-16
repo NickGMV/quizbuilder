@@ -7,7 +7,10 @@ html{
     min-height:80vh;
     width: 90vw;
     background-color:#abd7ed;
-    margin:100px auto;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 4px 4px 15px navy;
@@ -63,7 +66,7 @@ html{
     font-size:15px;
 }
 #question{
-    width:450px;
+    width:60vw;
     height:auto;
     margin: 50px auto 10px auto;
     background-color: #a8abee;
@@ -73,16 +76,6 @@ html{
     text-align: center;
     font-size:50px;
     
-}
-#choices{
-    width:80vw;
-    min-height:50vh;
-    padding: 5px;
-    margin: 10px auto 10px auto;
-    background-color:white;
-    box-shadow: 2px 2px 2px black;
-    -moz-box-shadow: 2px 2px 2px black;
-    -webkit-box-shadow: 2px 2px 2px black;
 }
 
 #startreset{
@@ -148,19 +141,27 @@ transition: all 0.5s;
 }
 .limit{width:80vw;
     word-wrap: break-word;
+    
 }
-
+#choices{
+    width:80vw;
+    min-height:50vh;
+    padding: 2vh;
+    margin: 10px auto 10px auto;
+    background-color:white;
+    box-shadow: 2px 2px 2px black;
+    -moz-box-shadow: 2px 2px 2px black;
+    -webkit-box-shadow: 2px 2px 2px black;
+    display: grid;
+}
 .box{
-width:80vw;
-height:auto;
+width:100%;
+height:100%;
 background-color: white;
-float:left;
-border-radius: 3px;
+border-radius: 6px;
 border-style: solid;
 cursor:pointer;
 text-align: center;
-position:relative;
-top:0px;
 transition: all 0.5s;
 -webkit-transition: all 0.2s;
 -ms-transition: all 0.2s;

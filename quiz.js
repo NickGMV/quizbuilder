@@ -8,7 +8,8 @@
 var document = "quiz.html"
 
 const qs = JSON.parse(questions);
-
+const opt = JSON.parse(options);
+console.log(opt);
 //var check = JSON.parse(questions).Q1.Question;
 
 //window.alert(check);
@@ -19,6 +20,13 @@ var i = 0;
 var score = 0;
 var keys = [];
 for(var k in qs) keys.push(k);
+
+if(parseInt(opt.options.Randomised) == 1){
+    window.alert('triggered randomised qs')
+    keys = keys.sort((a, b) => 0.5 - Math.random())
+    window.alert(keys);
+};
+
 
 var question = keys[i]
 
@@ -50,6 +58,7 @@ function generatequestion(question){
     //window.alert('question being generated')
     //var incorrect = 0;
     var question1 = eval("qs."+ question);
+    document.getElementById('instruction').innerHTML = question1.mode;
     var question2 = question1.Question; 
     document.getElementById('question').innerHTML = question2;
     //console.log(question)
