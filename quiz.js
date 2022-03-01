@@ -10,36 +10,49 @@
   //  Use a closure to hide the local variables from the
   //  global namespace
   //
-  (function () {
-    var QUEUE = MathJax.Hub.queue;  // shorthand for the queue
-    var math = null;                // the element jax for the math output.
+ // (function () {
+  //  var QUEUE = MathJax.Hub.queue;  // shorthand for the queue
+  //  var math = null;                // the element jax for the math output.
 
     //
     //  Get the element jax when MathJax has produced it.
     //
 
-window.UpdateMath = function () {
+//window.UpdateMath = function () {
 
 
-mat = document.getElementsByClassName('input')
+//mat = document.getElementsByClassName('input')
 
 
-for(let i = 0;i<mat.length;i++){
+//for(let i = 0;i<mat.length;i++){
 
 
-    QUEUE.Push(function () {
-        TeX = mat[i].value
-      math = MathJax.Hub.getAllJax("MathOutput")[0];
-      QUEUE.Push(["Text",math,"\\displaystyle{"+TeX+"}"]);
-    });
+    //QUEUE.Push(function () {
+     //   TeX = mat[i].value
+    //  math = MathJax.Hub.getAllJax("MathOutput")[0];
+   //   QUEUE.Push(["Text",math,"\\displaystyle{"+TeX+"}"]);
+ //   });
 
 
-}};
+//}};
    
 
-  })();
+  //})();
 
 
+  function include(file) {
+  
+    var script  = document.createElement('script');
+    script.src  = file;
+    script.type = 'text/javascript';
+    script.defer = true;
+    
+    document.getElementsByTagName('head').item(0).appendChild(script);
+    
+  }
+    
+  /* Include Many js files */
+  include('./MathJax-2.7.3/MathJax.js')
 
 var document = "quiz.html"
 
@@ -62,7 +75,9 @@ if(parseInt(opt.options.Randomised) == 1){
     keys = keys.sort((a, b) => 0.5 - Math.random())
     //window.alert(keys);
 };
-
+if(parseInt(opt.options.loopincorrect) == 1){
+    loop = true
+};
 
 var question = keys[i]
 
@@ -112,20 +127,30 @@ function generatequestion(question){
         gen_box(answers[i],i,'choices');}
         
     //answers.forEach((x, i) => gen_box(x,i,'choices'));
+    MathJax.Hub.Typeset("[#container]")
 }
 
 function gen_box(x,i,y){
     //window.alert('box being generated')
     document.getElementById(y).innerHTML+='<div class="box" id="box'+ i + '"onclick="checkAnswer(' + i + ')">'+ x +'</div>'
+
+
+
+
+
+
+    if(x == answer){
+        document.getElementById('box'+i).classList.add('correct');
+    }
 }
 
 
 function checkAnswer(b){
-    window.alert(answer)
+    //window.alert(answer)
     //var b = document.getElementById("box"+b).textContent;
-    window.alert(b);
+    //window.alert(b);
    //check answer from box
-    if(document.getElementById("box"+b).innerHTML === answer)
+    if(document.getElementById("box"+b).innerHTML === answer || document.getElementById("box"+b).classList.contains('correct'))
     //if answer is correct
     {document.getElementById("correct").style.display = "block";
     setTimeout(function(){document.getElementById("correct").style.display = "none"},1000)
@@ -136,9 +161,22 @@ function checkAnswer(b){
     generatequestion(question);
     
     }
-    //if answer is incorrect
-    else{document.getElementById("wrong").style.display = "block";
-    setTimeout(function(){document.getElementById("wrong").style.display = "none"},1000)}
+    else{//if answer is incorrect
+        document.getElementById("wrong").style.display = "block";
+        setTimeout(function(){document.getElementById("wrong").style.display = "none"},1000)
+
+
+    if(loop){
+        document.getElementById("choices").innerHTML = '';
+        var question_to_repeat = keys[i]
+        window.alert(question_to_repeat)
+        keys.push(question_to_repeat);
+        window.alert(keys)
+        i+=1;
+        question = keys[i];
+        generatequestion(question)
+    }
+    }
 }
 
 function updateScore() {

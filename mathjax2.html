@@ -39,14 +39,14 @@ for(let i = 0;i<mat.length;i++){
     QUEUE.Push(function () {
     math = MathJax.Hub.getAllJax(mat[i])[0];
     })
-
+    window.alert(math)
     var TeX = mat[i].value;
     window.alert(TeX)
     
     QUEUE.Push(function () {
         //QUEUE.Push(["Text",math,"\\displaystyle{"+TeX+"}"]);
       //QUEUE.Push(["Text",math,"\\displaystyle{"+TeX+"}"]);
-      QUEUE.Push(["Text",math,"x+1"]);
+      QUEUE.Push(["Text",math,TeX]);
     });
 
 
