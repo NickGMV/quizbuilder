@@ -61,9 +61,11 @@ html{
     box-shadow: 2px 2px 2px black;
     -moz-box-shadow: 2px 2px 2px black;
     -webkit-box-shadow: 2px 2px 2px black;
-    text-align: center;
     line-height: 20px;
     font-size:3vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #question{
     width:60vw;
@@ -164,10 +166,14 @@ html{
     -ms-transition: all 0.2s;
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
+    
+    display: flex;
+align-items: center;
+justify-content: center;
 
 }
 .box p {
-    margin:auto;
+    
     font-size:4vmin;
 }
     
