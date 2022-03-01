@@ -52,7 +52,7 @@
   }
     
   /* Include Many js files */
-  include('./MathJax-2.7.3/MathJax.js')
+  include('./dependencies/MathJax-2.7.3/MathJax.js')
 
 var document = "quiz.html"
 

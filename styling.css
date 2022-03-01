@@ -166,7 +166,11 @@ html{
     -o-transition: all 0.2s;
 
 }
-
+.box p {
+    margin:auto;
+    font-size:4vmin;
+}
+    
 .box:hover{
     background: purple;
     color: white;

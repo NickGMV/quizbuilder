@@ -56,7 +56,7 @@ qs.head()
 qs.drop(columns = ['incorrect1','incorrect2','incorrect3','incorrect4'], inplace = True)
 
 # turn equations to text?
-#qs['Correctanswer'] = qs['Correctanswer'].apply(convert)
+qs['Correctanswer'] = qs['Correctanswer'].apply(lambda x: f'<p> {x} </p>')
 #qs['Question'] = qs['Question'].apply(convert)
 ##qs['Correctanswer'] = qs['Correctanswer'].apply(bracklean)
 #qs['Question'] = qs['Question'].apply(bracklean)
