@@ -4,6 +4,42 @@
 // get format nicely
 // get it to deal with varying question lengths 
 //https://stackoverflow.com/questions/5613834/convert-string-to-variable-name-in-javascript
+///
+
+  //
+  //  Use a closure to hide the local variables from the
+  //  global namespace
+  //
+  (function () {
+    var QUEUE = MathJax.Hub.queue;  // shorthand for the queue
+    var math = null;                // the element jax for the math output.
+
+    //
+    //  Get the element jax when MathJax has produced it.
+    //
+
+window.UpdateMath = function () {
+
+
+mat = document.getElementsByClassName('input')
+
+
+for(let i = 0;i<mat.length;i++){
+
+
+    QUEUE.Push(function () {
+        TeX = mat[i].value
+      math = MathJax.Hub.getAllJax("MathOutput")[0];
+      QUEUE.Push(["Text",math,"\\displaystyle{"+TeX+"}"]);
+    });
+
+
+}};
+   
+
+  })();
+
+
 
 var document = "quiz.html"
 
@@ -22,9 +58,9 @@ var keys = [];
 for(var k in qs) keys.push(k);
 
 if(parseInt(opt.options.Randomised) == 1){
-    window.alert('triggered randomised qs')
+   // window.alert('triggered randomised qs')
     keys = keys.sort((a, b) => 0.5 - Math.random())
-    window.alert(keys);
+    //window.alert(keys);
 };
 
 
@@ -36,7 +72,7 @@ function startQuiz(){
     
     if(quizstate != 1){
         document.getElementById("choices").innerHTML = '';
-        window.alert(quizstate);
+        //window.alert(quizstate);
         document.getElementById("quizover").style.display = "none";
          quizstate = 1;
         //window.alert(gamestate);
@@ -80,7 +116,7 @@ function generatequestion(question){
 
 function gen_box(x,i,y){
     //window.alert('box being generated')
-    document.getElementById(y).innerHTML+='<div class="box" id="box'+ i + '"onclick="checkAnswer(' + i + ')"><p class="limit">'+ x +'</p></div>'
+    document.getElementById(y).innerHTML+='<div class="box" id="box'+ i + '"onclick="checkAnswer(' + i + ')">'+ x +'</div>'
 }
 
 
@@ -89,7 +125,7 @@ function checkAnswer(b){
     //var b = document.getElementById("box"+b).textContent;
     window.alert(b);
    //check answer from box
-    if(document.getElementById("box"+b).textContent === answer.toString())
+    if(document.getElementById("box"+b).innerHTML === answer)
     //if answer is correct
     {document.getElementById("correct").style.display = "block";
     setTimeout(function(){document.getElementById("correct").style.display = "none"},1000)

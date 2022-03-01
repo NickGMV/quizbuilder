@@ -55,47 +55,47 @@ html{
 
 #instruction{
     width:80vw;
-    min-height:20px;
-    margin: 10px auto 10px auto;
+    min-height:10vh;
+    margin: 2vh auto 10px auto;
     background-color: #ba8fde;
     box-shadow: 2px 2px 2px black;
     -moz-box-shadow: 2px 2px 2px black;
     -webkit-box-shadow: 2px 2px 2px black;
     text-align: center;
     line-height: 20px;
-    font-size:15px;
+    font-size:3vmin;
 }
 #question{
     width:60vw;
     height:auto;
-    margin: 50px auto 10px auto;
+    margin: 5vh auto 10px auto;
     background-color: #a8abee;
     box-shadow: 2px 2px 2px black;
     -moz-box-shadow: 2px 2px 2px black;
     -webkit-box-shadow: 2px 2px 2px black;
     text-align: center;
-    font-size:50px;
+    font-size:5vh;
     
 }
 
 #startreset{
-position: relative;
-width:85px;
-height: 20px;
-background-color: white;
-margin: 0px auto 0px auto;
-border-radius: 3px;
+    position: relative;
+    width:85px;
+    height: 20px;
+    background-color: white;
+    margin: 0px auto 0px auto;
+    border-radius: 3px;
     box-shadow: 2px 2px 2px black;
     -moz-box-shadow: 2px 2px 2px black;
     -webkit-box-shadow: 2px 2px 2px black;
-top: 0px;
-cursor:pointer;
-text-align: center;
-transition: all 0.5s;
--webkit-transition: all 0.2s;
--ms-transition: all 0.2s;
--moz-transition: all 0.2s;
--o-transition: all 0.2s;
+    top: 0px;
+    cursor:pointer;
+    text-align: center;
+    transition: all 0.5s;
+    -webkit-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
     
 }
 
@@ -139,10 +139,7 @@ transition: all 0.5s;
     z-index:2;
     display:none;
 }
-.limit{width:80vw;
-    word-wrap: break-word;
-    
-}
+
 #choices{
     width:80vw;
     min-height:50vh;
@@ -155,18 +152,18 @@ transition: all 0.5s;
     display: grid;
 }
 .box{
-width:100%;
-height:100%;
-background-color: white;
-border-radius: 6px;
-border-style: solid;
-cursor:pointer;
-text-align: center;
-transition: all 0.5s;
--webkit-transition: all 0.2s;
--ms-transition: all 0.2s;
--moz-transition: all 0.2s;
--o-transition: all 0.2s;
+    width:100%;
+    height:100%;
+    background-color: white;
+    border-radius: 6px;
+    border-style: solid;
+    cursor:pointer;
+    text-align: center;
+    transition: all 0.5s;
+    -webkit-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
 
 }
 

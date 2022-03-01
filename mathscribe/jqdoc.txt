@@ -1,0 +1,18 @@
+jqMath uses a simple TeX-like syntax, with MathML semantics:
+
+$, or \( and \), to delimit inline mathematics
+$$, or \[ and \], to delimit block or “display” mathematics
+^ for superscript
+_ for subscript
+{ and } for grouping
+↖ for overscript
+↙ for underscript
+\ or ` to quote the next character (turning off its special meaning), start a macro or multi-letter name, or make a name non-italic
+\bo, \it, or \bi for a bold, italic, or bold-italic variable
+\sc or \fr for a script or Fraktur letter
+\ov for an overbar
+\table for a matrix, table, or simply tabular alignment - separate entries with , and rows with ;
+\text or \html for plain text or html inside mathematics - specify the text or html inside quotes (note \html only works inside a trusted source)
+spaces, tabs and newlines are ignored - jqMath formats the mathematics
+you can use \$ for a real $, or \\ for a \ if necessary
+jqMath is lightweight, fast and concise. It is standards-based and cross-browser, using MathML when available, else simple HTML and CSS, and avoiding pixel-map images. Thus pages load quickly, and expressions can be resized by the user, or easily passed to screen reading, graphing, or computer algebra software.

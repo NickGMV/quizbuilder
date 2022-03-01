@@ -4,6 +4,22 @@ import pandas as pd
 #import shutil
 #import openpyxl
 from datetime import datetime
+import mdtex2html
+import numpy as np
+
+## added to convert to html
+def convert(x):
+    y = f'{x}'
+    print(y)
+    #eval('x = "{x}"')
+    z = mdtex2html.convert(y)
+    z = z.replace('"',"'")
+    print(z)
+    return z
+
+def quote_clean(x):
+    x = x.replace("'","&#39")
+    return x
 
 
 url = './quiz questions.xlsx'
@@ -16,7 +32,7 @@ qs['incorrect'] = 'x'
 #qs['index']='y'
 qs.head()
 
-
+qs.applymap(quote_clean)
 
 qs['index2'] = range(1,len(qs)+1)
 #qs.head()
@@ -28,12 +44,17 @@ qs.head()
 
 for index, row in qs.iterrows():
     incorrect=[]
-    incorrect = [x for x in row[2:-3] if x!='na']
+    incorrect = ['<p>' + x + '</p>' for x in row[2:-3] if x!='na']
+    #incorrect = [convert(x) for x in row[2:-3] if x!='na']
     row['incorrect'] = incorrect
     print(incorrect)
 qs.head()
 
 qs.drop(columns = ['incorrect1','incorrect2','incorrect3','incorrect4'], inplace = True)
+
+# turn equations to text?
+#qs['Correctanswer'] = qs['Correctanswer'].apply(convert)
+#qs['Question'] = qs['Question'].apply(convert)
 
 json = qs.to_json(orient="index")
 json2 = options.to_json()
