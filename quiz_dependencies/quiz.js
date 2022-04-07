@@ -40,27 +40,31 @@
   //})();
 
 
-  function include(file) {
+//function include(file) {
   
-    var script  = document.createElement('script');
-    script.src  = file;
-    script.type = 'text/javascript';
-    script.defer = true;
+   // var script  = document.createElement('script');
+    //script.src  = file;
+    //script.type = 'text/javascript';
+    //script.defer = true;
     
-    document.getElementsByTagName('head').item(0).appendChild(script);
+   // document.getElementsByTagName('head').item(0).appendChild(script);
     
-  }
+  //}
     
   /* Include Many js files */
-  include('./dependencies/MathJax-2.7.3/MathJax.js')
+ // include('./quiz_dependencies/MathJax-2.7.3/MathJax.js')
 
-var document = "quiz.html"
+//var document = "quiz.html"
 
+//questions = questions.replaceAll("*",'&#215');
+//questions = questions.replaceAll("*",'&#92;times')
+//questions = questions.replaceAll("*",'&#92;times')
 const qs = JSON.parse(questions);
+////
+
 const opt = JSON.parse(options);
 console.log(opt);
 //var check = JSON.parse(questions).Q1.Question;
-
 //window.alert(check);
 var quizstate = 0;
 var answer = 0 ;
@@ -134,11 +138,6 @@ function gen_box(x,i,y){
     //window.alert('box being generated')
     document.getElementById(y).innerHTML+='<div class="box" id="box'+ i + '"onclick="checkAnswer(' + i + ')">'+ x +'</div>'
 
-
-
-
-
-
     if(x == answer){
         document.getElementById('box'+i).classList.add('correct');
     }
@@ -169,9 +168,9 @@ function checkAnswer(b){
     if(loop){
         document.getElementById("choices").innerHTML = '';
         var question_to_repeat = keys[i]
-        window.alert(question_to_repeat)
+        //window.alert(question_to_repeat)
         keys.push(question_to_repeat);
-        window.alert(keys)
+        //window.alert(keys)
         i+=1;
         question = keys[i];
         generatequestion(question)
